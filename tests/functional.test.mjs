@@ -42,10 +42,10 @@ test('la página servida identifica a Marieta y enlaza consultas y crédito corr
 
 test('todos los recursos declarados por la página responden con un tipo correcto', async () => {
   const html = await (await fetch(origin)).text();
-  const assetPaths = [...new Set([...html.matchAll(/(?:src|href)=["'](\/assets\/[^"']+)["']/g)].map((match) => match[1]))];
+  const assetPaths = [...new Set([...html.matchAll(/(?:src|href)=["']((?:\.\/|\/)assets\/[^"']+)["']/g)].map((match) => match[1]))];
   assert.ok(assetPaths.length >= 8, 'Debe haber estilos, librerías, aplicación e imágenes');
   for (const assetPath of assetPaths) {
-    const response = await fetch(`${origin}${assetPath}`);
+    const response = await fetch(new URL(assetPath, `${origin}/`));
     assert.equal(response.status, 200, assetPath);
     const mime = response.headers.get('content-type');
     if (assetPath.endsWith('.css')) assert.match(mime, /^text\/css/, assetPath);
@@ -60,7 +60,7 @@ test('todos los recursos declarados por la página responden con un tipo correct
 
 test('cada foto del catálogo real se sirve como imagen con contenido', async () => {
   for (const product of products) {
-    const response = await fetch(`${origin}${product.image}`);
+    const response = await fetch(new URL(product.image, `${origin}/`));
     assert.equal(response.status, 200, `${product.id}: ${product.image}`);
     assert.match(response.headers.get('content-type'), /^image\//, product.id);
     const bytes = new Uint8Array(await response.arrayBuffer());

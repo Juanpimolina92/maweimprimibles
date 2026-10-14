@@ -34,7 +34,7 @@ section { scroll-margin-top: 16px; }
 .brand-word { font-family: Georgia, "Times New Roman", serif; font-size: 53px; font-weight: 700; letter-spacing: -6px; line-height: .9; color: $rose; transform: rotate(-4deg); padding-right: 6px; }
 .brand-caption { margin-top: 9px; font-size: 9px; letter-spacing: .85px; }
 .main-navigation { display: flex; align-items: center; gap: 36px; font-size: 13px; font-weight: 600; }
-.main-navigation a { transition: color .2s; }
+.main-navigation a { transition: color .2s; white-space: nowrap; }
 .main-navigation a:hover { color: $rose; }
 .main-navigation .nav-contact { border: 1px solid #b88397; padding: 10px 22px; border-radius: 99px; }
 .main-navigation .nav-contact:hover { color: $ink; background: $pink; }
@@ -245,7 +245,7 @@ body.dialog-open { overflow: hidden; }
   .header-inner { min-height: 91px; }
   .brand-word { font-size: 47px; }
   .brand-caption { font-size: 8px; }
-  .main-navigation { gap: 20px; font-size: 12px; }
+  .main-navigation { gap: 16px; font-size: 12px; }
   .main-navigation .nav-contact { padding-inline: 15px; }
   .hero-grid { grid-template-columns: .95fr 1fr; }
   .hero h1 { font-size: 58px; }

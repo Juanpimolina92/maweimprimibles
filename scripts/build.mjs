@@ -22,4 +22,8 @@ for (const [moduleFile, destination] of [
   ['aos/dist/aos.css', 'aos.css'],
   ['aos/dist/aos.js', 'aos.js'],
 ]) await copyFile(require.resolve(moduleFile), path.join(dist, 'assets', 'vendor', destination));
-console.log('Landing construida en dist/.');
+
+// Keep a ready-to-publish entry point in Git as well as the isolated Vercel output.
+await copyFile(path.join(dist, 'index.html'), path.join(root, 'index.html'));
+await cp(path.join(dist, 'assets'), path.join(root, 'assets'), { recursive: true });
+console.log('Landing construida en dist/ y exportada a index.html + assets/.');

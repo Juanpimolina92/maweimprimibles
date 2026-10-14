@@ -1,0 +1,312 @@
+{
+  "testedUrl": "http://127.0.0.1:3001/",
+  "date": "2026-10-14",
+  "scope": "Local browser; Vercel pendiente de push",
+  "checks": [
+    {
+      "name": "catálogo, Instagram y AOS cargan",
+      "scope": "local browser",
+      "details": {
+        "aosReady": true,
+        "cards": 10,
+        "instagram": "https://www.instagram.com/mawe_kits/",
+        "scrollWidth": 1425,
+        "width": 1440
+      },
+      "pass": true,
+      "time": "2026-10-14T10:50:52.349Z"
+    },
+    {
+      "name": "filtro kits",
+      "scope": "local browser",
+      "details": {
+        "expected": 2,
+        "actual": 10
+      },
+      "pass": false,
+      "time": "2026-10-14T10:50:52.762Z",
+      "resolution": "La primera pulsación coincidió con scroll automático; con control visible e input nativo el filtro devuelve 2 productos."
+    },
+    {
+      "name": "filtro Kits mediante input nativo",
+      "scope": "local browser",
+      "details": {
+        "count": 2,
+        "selected": "true"
+      },
+      "pass": true,
+      "time": "2026-10-14T10:51:40.183Z"
+    },
+    {
+      "name": "filtro Imprimibles",
+      "scope": "local browser",
+      "details": {
+        "expected": 3,
+        "actual": 3
+      },
+      "pass": true,
+      "time": "2026-10-14T10:52:09.793Z"
+    },
+    {
+      "name": "filtro Personalizados",
+      "scope": "local browser",
+      "details": {
+        "expected": 5,
+        "actual": 5
+      },
+      "pass": true,
+      "time": "2026-10-14T10:52:10.157Z"
+    },
+    {
+      "name": "filtro Ver todo",
+      "scope": "local browser",
+      "details": {
+        "expected": 10,
+        "actual": 10
+      },
+      "pass": true,
+      "time": "2026-10-14T10:52:10.522Z"
+    },
+    {
+      "name": "detalle y consulta WhatsApp",
+      "scope": "local browser",
+      "details": {
+        "imageLoaded": true,
+        "open": true,
+        "title": "Un festejo de Frozen",
+        "whatsapp": "https://wa.me/5492646241204?text=%C2%A1Hola%20Marieta!%20Vi%20%E2%80%9CUn%20festejo%20de%20Frozen%E2%80%9D%20en%20el%20cat%C3%A1logo%20de%20Mawe%20y%20me%20gustar%C3%ADa%20consultar%20por%20este%20dise%C3%B1o.%20Mi%20idea%20es%3A%20"
+      },
+      "pass": true,
+      "time": "2026-10-14T10:52:10.853Z"
+    },
+    {
+      "name": "Escape y retorno del foco",
+      "scope": "local browser",
+      "details": {
+        "focused": "Ver detalle: Un festejo de Frozen",
+        "open": false
+      },
+      "pass": true,
+      "time": "2026-10-14T10:52:42.708Z"
+    },
+    {
+      "name": "proporciones correctas de todas las imágenes",
+      "scope": "local browser",
+      "details": [
+        {
+          "carousel": false,
+          "height": "326px",
+          "width": "326px",
+          "ratio": 1
+        },
+        {
+          "carousel": false,
+          "height": "346.663px",
+          "width": "346.663px",
+          "ratio": 1
+        },
+        {
+          "carousel": false,
+          "height": "346.663px",
+          "width": "346.663px",
+          "ratio": 1
+        },
+        {
+          "carousel": false,
+          "height": "346.675px",
+          "width": "346.675px",
+          "ratio": 1
+        },
+        {
+          "carousel": false,
+          "height": "346.663px",
+          "width": "346.663px",
+          "ratio": 1
+        },
+        {
+          "carousel": false,
+          "height": "346.663px",
+          "width": "346.663px",
+          "ratio": 1
+        },
+        {
+          "carousel": false,
+          "height": "346.675px",
+          "width": "346.675px",
+          "ratio": 1
+        },
+        {
+          "carousel": false,
+          "height": "346.663px",
+          "width": "346.663px",
+          "ratio": 1
+        },
+        {
+          "carousel": false,
+          "height": "346.663px",
+          "width": "346.663px",
+          "ratio": 1
+        },
+        {
+          "carousel": false,
+          "height": "346.675px",
+          "width": "346.675px",
+          "ratio": 1
+        },
+        {
+          "carousel": false,
+          "height": "346.663px",
+          "width": "346.663px",
+          "ratio": 1
+        },
+        {
+          "carousel": true,
+          "height": "422.025px",
+          "width": "455.8px",
+          "ratio": 1.0800308038623305
+        }
+      ],
+      "pass": true,
+      "time": "2026-10-14T10:52:42.738Z"
+    },
+    {
+      "name": "carrusel siguiente",
+      "scope": "local browser",
+      "details": "2 de 3",
+      "pass": true,
+      "time": "2026-10-14T10:53:15.487Z"
+    },
+    {
+      "name": "carrusel anterior",
+      "scope": "local browser",
+      "details": "1 de 3",
+      "pass": true,
+      "time": "2026-10-14T10:53:16.461Z"
+    },
+    {
+      "name": "indicador del carrusel",
+      "scope": "local browser",
+      "details": "3 de 3",
+      "pass": true,
+      "time": "2026-10-14T10:53:17.383Z"
+    },
+    {
+      "name": "alias copiado al portapapeles",
+      "scope": "local browser",
+      "details": "marie.pezzutti.mp",
+      "pass": true,
+      "time": "2026-10-14T10:53:25.927Z"
+    },
+    {
+      "name": "preguntas frecuentes",
+      "scope": "local browser",
+      "details": 1,
+      "pass": true,
+      "time": "2026-10-14T10:53:40.759Z"
+    },
+    {
+      "name": "tablet y menú con Instagram",
+      "scope": "local browser",
+      "details": {
+        "headerRight": 732.7999877929688,
+        "instagram": "Instagram ↗",
+        "navRight": 732.8000183105469,
+        "scrollWidth": 753,
+        "width": 768
+      },
+      "pass": true,
+      "time": "2026-10-14T10:53:59.697Z"
+    },
+    {
+      "name": "móvil sin desbordamiento",
+      "scope": "local browser",
+      "details": {
+        "scrollWidth": 360,
+        "width": 375
+      },
+      "pass": true,
+      "time": "2026-10-14T10:54:08.863Z"
+    },
+    {
+      "name": "menú móvil abre",
+      "scope": "local browser",
+      "details": "true",
+      "pass": true,
+      "time": "2026-10-14T10:54:44.478Z"
+    },
+    {
+      "name": "menú móvil cierra al navegar",
+      "scope": "local browser",
+      "details": "false",
+      "pass": true,
+      "time": "2026-10-14T10:54:45.080Z"
+    },
+    {
+      "name": "imágenes cuadradas en catálogo móvil",
+      "scope": "local browser",
+      "details": [
+        {
+          "height": "136px",
+          "loaded": true,
+          "width": "136px"
+        },
+        {
+          "height": "136px",
+          "loaded": true,
+          "width": "136px"
+        },
+        {
+          "height": "136px",
+          "loaded": true,
+          "width": "136px"
+        },
+        {
+          "height": "136px",
+          "loaded": true,
+          "width": "136px"
+        },
+        {
+          "height": "136px",
+          "loaded": true,
+          "width": "136px"
+        },
+        {
+          "height": "136px",
+          "loaded": true,
+          "width": "136px"
+        },
+        {
+          "height": "136px",
+          "loaded": true,
+          "width": "136px"
+        },
+        {
+          "height": "136px",
+          "loaded": true,
+          "width": "136px"
+        },
+        {
+          "height": "136px",
+          "loaded": true,
+          "width": "136px"
+        },
+        {
+          "height": "136px",
+          "loaded": true,
+          "width": "136px"
+        }
+      ],
+      "pass": true,
+      "time": "2026-10-14T10:55:44.805Z"
+    },
+    {
+      "name": "sin errores capturados en consola",
+      "scope": "local browser",
+      "details": [],
+      "pass": true,
+      "time": "2026-10-14T10:55:44.817Z"
+    }
+  ],
+  "passed": 19,
+  "unresolved": 0
+}

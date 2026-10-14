@@ -1,61 +1,60 @@
 # Verificación independiente
 
-Fecha: 13 de octubre de 2026 (Argentina).
+14 de octubre de 2026 — Argentina.
 
-Estado inicial: **NEEDS WORK**. No se certifica producción hasta contar con evidencia de las pruebas aplicables.
+**Verificación local aprobada.** Reality Checker reprodujo las pruebas y abrió las capturas actuales. No sobreviven problemas confirmados del código ni del artefacto local. La nueva versión de Vercel queda pendiente del push autorizado y de su comprobación posterior; este informe no certifica producción.
 
-## Puertas de verificación
+## Puertas y evidencia
 
-| Puerta | Evidencia requerida | Estado |
+| Puerta | Resultado | Evidencia |
 | --- | --- | --- |
-| Compilación | HAML y Sass compilados; recursos JavaScript disponibles | Pendiente |
-| Unitarias | Casos de catálogo, filtros, consulta WhatsApp y alias exacto | 7/7 aprobadas |
-| Funcionales HTTP | Página, recursos, imágenes y ausencia de iniciación de cobros | 6/6 aprobadas |
-| Navegador | Escritorio, tablet, móvil e interacciones antes/después | Pendiente |
-| Seguridad local | Traversal, exposición de fuentes/secretos, métodos, límites y cabeceras | 9/9 aprobadas |
-| Dependencias | Auditoría del registro npm contra el lockfile | 0 vulnerabilidades notificadas; 30 dependencias |
-| API de Mercado Pago | El usuario cambió el alcance a mostrar sólo el alias | No aplica; no se ejecuta ningún cobro |
-| Revisión independiente | Reproducción de cada hallazgo de Code Reviewer y reejecución tras correcciones | Pendiente |
+| Compilación | Aprobada | HAML/Sass compilados; HTML, estilos, módulos, Bootstrap, AOS y fotos servidos correctamente |
+| Unitarias | 8/8 aprobadas | Catálogo, filtros, WhatsApp, alias exacto y fotos en rutas relativas |
+| Funcionales HTTP | 6/6 aprobadas | Página real, todos sus recursos, fotos, atributos accesibles y ausencia de precios/API de cobro |
+| Seguridad local | 9/9 aprobadas | Traversal raw, archivos privados, métodos, CSP, MIME, XSS de query/origen y límite por IP |
+| Artefacto estático | 4/4 aprobadas | Export de raíz idéntico a dist/; recursos, imports y fotos en / y /maweimprimibles/ |
+| Navegador local | 19 comprobaciones aprobadas | [Registro de navegador](browser-verification.json) y capturas actuales |
+| Dependencias | 0 alertas notificadas | [Auditoría npm del 13 de octubre](dependency-audit.json); las dependencias no cambiaron en esta corrección |
+| Vercel publicado | Pendiente después del push | La configuración publica exclusivamente dist/; falta verificar la versión activa |
 
-## Condiciones de aceptación
+La reejecución independiente de node --test tests/*.test.mjs aprobó **27/27**, con **0 fallos y 0 omisiones**; duración observada **760,6299 ms**. El [registro de la ejecución de raíz](tests.tap) coincide en 27 aprobadas, con duración propia de 823,5157 ms. Code Reviewer también reprodujo las 4 pruebas de despliegue.
 
-- Catálogo sin precios visibles, estilo pastel con rosa predominante, HAML, Sass, JavaScript, Node, Bootstrap, carrusel y AOS.
-- Encabezado de Marieta, consultas a WhatsApp 2646241204 y pie con Juan Pablo Molina y su GitHub.
-- Mercado Pago muestra sólo el alias `marie.pezzutti.mp`, sin precios visibles ni API de cobro.
-- Esta verificación no ejecuta cobros ni ataques contra servicios externos.
+El JSON de navegador conserva 20 intentos: 19 aprobados y un primer clic de filtro que coincidió con el desplazamiento automático. La reejecución con el control visible e input nativo comprobó 2 productos y aria-pressed="true"; el intento inicial tiene una resolución explícita, no se ocultó como aprobado.
 
-## Evidencia de revisión
+## Evidencia visual y recorridos
 
-Se completará con resultados reproducidos, archivos de prueba y capturas existentes. Los hallazgos corregidos quedarán registrados como resueltos; sólo los problemas todavía reproducibles se presentarán como pendientes.
+Las capturas actuales se revisaron directamente: escritorio de 1440 px, tablet de 768 px y móvil de 375 px. Muestran rosa predominante, detalles amarillos/celestes/verdes, presentación de Marieta y catálogo de diseños sin precios.
 
-### Hallazgo reproducido: atributos HAML incompatibles
+- [Detalle de Frozen](screenshots/fixed-product.jpg): diálogo real con foto, descripción y consulta por WhatsApp. El registro acredita cierre con Escape y retorno del foco al botón original.
+- [Carrusel](screenshots/fixed-carousel.jpg): segundo diseño e indicador visibles. El registro comprobó siguiente 2 de 3, anterior 1 de 3 e indicador 3 de 3.
+- [Alias](screenshots/fixed-alias.jpg): marie.pezzutti.mp, confirmación de copia y consulta por WhatsApp. El registro verificó el contenido exacto del portapapeles mediante input nativo.
+- [Tablet](screenshots/fixed-tablet.jpg): composición del hero corregida y enlace Instagram en el menú.
+- [Inicio móvil](screenshots/fixed-mobile-home.jpg), [menú móvil](screenshots/fixed-mobile-menu.jpg) y [catálogo móvil](screenshots/fixed-mobile-catalog.jpg): navegación visible, Instagram y fotos cuadradas. El registro comprobó apertura y cierre al navegar.
 
-**Severidad alta; resuelto en fuente y HTML compilado.** Al renderizar inicialmente `src/index.haml` con `hamljs` se obtuvieron **86 atributos con `aria_` o `data_` y ninguno con `aria-` o `data-`**. Este compilador conserva literalmente los guiones bajos. Por tanto, `data_category`, `data_bs_target`, `data_aos` y `data_open_payment` no satisfacían los selectores ni las interfaces esperadas por los filtros, Bootstrap, AOS y el diálogo de alias; las propiedades ARIA tampoco correspondían a los atributos estándar.
+Los filtros devolvieron 2 kits, 3 imprimibles, 5 personalizados y 10 en “Ver todo”. AOS estaba inicializado. La FAQ abrió su contenido y no se capturaron errores de consola durante el recorrido. Se comprobó ausencia de desbordamiento horizontal en los tres anchos: 1425 ≤ 1440, 753 ≤ 768 y 360 ≤ 375 px.
 
-Reproducción independiente: cargar `src/index.haml`, llamar `haml.render(...)` y contar los nombres mediante `/(?:aria|data)_[a-z_]+=/g` frente a `/(?:aria|data)-[a-z-]+=/g`. Se informó a los responsables de plantilla y compilación. La prueba funcional exige los nombres con guiones y rechaza los nombres con guiones bajos.
+## Hallazgos revisados y resueltos
 
-Reejecución tras corregir la plantilla: **0 atributos con guiones bajos y 86 con guiones**. La prueba del documento compilado también aprobó. Las interacciones reales quedan sujetas a la evidencia de navegador.
+1. **Alta — atributos HAML con guiones bajos.** La renderización inicial produjo 86 atributos aria_/data_ incompatibles. Se corrigieron a claves explícitas con guiones y se verificó el HTML compilado; las interacciones actuales también aprobaron.
+2. **Alta — Bootstrap rechazado por el servidor.** bootstrap.min.css y bootstrap.bundle.min.js no coincidían con la lista de rutas permitidas. Los recursos actuales responden 200. La regresión de seguridad permite puntos internos y sigue rechazando archivos ocultos y traversal.
+3. **Alta — fotos con altura fija en móvil/tablet.** Las [capturas anteriores de móvil](screenshots/before-mobile-image-height.jpg) y [tablet](screenshots/before-tablet-image-height.jpg) mostraban fotos demasiado altas. height: auto corrigió la composición. El catálogo móvil actual y su registro muestran las 10 fotos cargadas a **136 × 136 px**; las tarjetas de escritorio mantienen proporción 1 y el carrusel aproximadamente 1,08. El hallazgo quedó cerrado con evidencia posterior.
 
-### Hallazgo reproducido: recursos de Bootstrap rechazados
+**Problemas confirmados que sobreviven al escrutinio local: ninguno.** Esto describe el alcance comprobado; una auditoría sin alertas y estos casos de seguridad no prueban ausencia universal de vulnerabilidades.
 
-**Severidad alta; resuelto y revalidado.** La prueba funcional inicial contra `dist/` reprodujo `GET /assets/vendor/bootstrap.min.css → 404`. La lista de rutas permitidas en `src/server.mjs` admitía sólo un punto, antes de la extensión; los nombres reales de Bootstrap contienen varios puntos. El código mostraba la misma incompatibilidad para `bootstrap.bundle.min.js`.
+## Alcance del despliegue
 
-Reproducción: `node --test tests/functional.test.mjs` con acceso local autorizado. Resultado inicial: **5 aprobadas, 1 fallida**, por recurso de Bootstrap ausente en HTTP.
+vercel.json selecciona dist/, y la prueba revisó su inventario: documento y recursos públicos, sin fuentes HAML/Sass, tests, informes, archivos privados ni enlaces simbólicos. index.html y cada archivo de assets/ de la raíz coinciden byte por byte con dist/. El fixture bajo /maweimprimibles/ rechaza recursos que se escapen a la raíz del dominio; todos los recursos e imports actuales se resolvieron dentro del montaje.
 
-Reejecución después de corregir la ruta: todos los recursos declarados por la página respondieron `200` con MIME y contenido correctos. La regresión de seguridad comprobó que permitir puntos internos no habilitó archivos ocultos ni traversal. La suite completa independiente aprobó **22/22**, sin omisiones.
+La [captura anterior de Vercel](screenshots/vercel-before.jpg) conserva el error de la versión publicada antes de la corrección. Una compilación local no acredita el despliegue activo. Los tests de cabeceras y límite por IP corresponden al servidor Node local; el proveedor estático requiere su propia verificación. El registro de navegador local no aporta métricas de carga ni pruebas en varios navegadores, por lo que no se certifican rendimiento general ni producción.
 
-### Hallazgo reproducido: fotos demasiado altas en móvil y tablet
+Mercado Pago sólo muestra el alias solicitado; la API de cobro quedó fuera del alcance por instrucción del usuario. No se ejecutaron cobros ni ataques a servicios externos.
 
-**Severidad alta; fuente corregida, revalidación visual pendiente.** Reality Checker abrió independientemente [la captura móvil anterior](screenshots/before-mobile-image-height.jpg) y [la captura tablet anterior](screenshots/before-tablet-image-height.jpg). La primera muestra las fotos del catálogo largas y recortadas; la segunda muestra fotos del hero que se extienden hasta el límite inferior de la sección y desarman la composición. La raíz midió antes de corregir 216 px de ancho y 640 px de alto en una foto del hero de tablet, y 319,4 px de ancho con 600 px de alto en una tarjeta.
+## Comandos y reproducción
 
-La revisión del Sass confirmó que los atributos HTML `height` de 600/640/700 conservaban su altura aunque CSS reducía el ancho. Se añadió `height: auto` a las imágenes generales y al diálogo móvil. Se requiere comparar las capturas posteriores y las dimensiones efectivas de navegador para cerrar este hallazgo.
+- Inventario: rg --files -g '!node_modules' -g '!dist', más el equivalente PowerShell del inventario de vistas/HTML. El proyecto usa HAML/Sass y exportación HTML estática.
+- Comprobación de afirmaciones de diseño: rg -n -i 'luxury|premium|glass|morphism' -g '*.html' -g '*.css' -g '*.blade.php' . No se usaron etiquetas comerciales como evidencia de calidad.
+- Pruebas: node --test tests/*.test.mjs y node --test tests/deployment.test.mjs.
+- Auditoría independiente original: npm.cmd audit --json, salida 0, todas las severidades en 0, 30 dependencias.
+- qa-playwright-capture.sh no existe en el proyecto. Se utilizó el navegador disponible, sus capturas JPEG y el registro JSON de interacciones; no se presentan como capturas de otro navegador o de otra herramienta.
 
-## Comandos de comprobación
-
-- Inventario de implementación: `rg --files -g '!node_modules' -g '!dist'` y equivalente PowerShell a `ls -la resources/views/ || ls -la *.html`. La implementación elegida es HAML/Sass y servidor Node; el HTML se genera en `dist/`.
-- Comprobación de afirmaciones visuales: `rg -n -i 'luxury|premium|glass|morphism' -g '*.html' -g '*.css' -g '*.blade.php' .`. No se toma ninguna descripción comercial como acreditación de calidad.
-- `qa-playwright-capture.sh` no existe en el proyecto al inicio. La raíz aporta las capturas con el navegador disponible; debe adjuntar datos reales de interacciones y tiempos antes de cerrar esta puerta.
-- `node --test tests/catalog.test.mjs`: **7 aprobadas, 0 fallidas** (122,653 ms de duración total observada; esto mide la prueba y no la carga de la página).
-- `node --test tests/*.test.mjs`, reejecución independiente final de código HTTP: **22 aprobadas, 0 fallidas, 0 omitidas**; duración total **637,7568 ms**. Desglose: 7 unitarias, 6 funcionales y 9 de seguridad local.
-- `npm.cmd audit --json`, reejecución independiente: salida `0`, `vulnerabilities: {}`, contadores de información/baja/moderada/alta/crítica en `0`; 30 dependencias (6 de producción y 24 de desarrollo). Una auditoría sin alertas no prueba ausencia universal de vulnerabilidades.
-- Las pruebas HTTP necesitaron acceso a `127.0.0.1` fuera del sandbox tras `EACCES`; la consulta a npm necesitó red tras `ENOTFOUND`. Son limitaciones del entorno de prueba, no fallos del sitio. El primer error de cuerpos HTTP en la suite de seguridad se corrigió añadiendo `Content-Length` al cliente de prueba, y se volvió a ejecutar la suite.
+Las conexiones locales y la consulta a npm necesitaron acceso fuera del sandbox tras EACCES y ENOTFOUND. Esas restricciones fueron del entorno. El cliente de prueba de métodos añadió Content-Length para enviar cuerpos HTTP válidos antes de repetir la suite.

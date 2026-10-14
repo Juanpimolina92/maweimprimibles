@@ -3,6 +3,7 @@
 Tecnologías utilizadas:
 
 - HAML (hamljs)
+- HTML5 generado
 - JavaScript
 - Node.js
 - Bootstrap 5 y Carousel
@@ -10,6 +11,7 @@ Tecnologías utilizadas:
 - Sass
 - Visual Studio Code
 - Git y GitHub
+- Vercel
 
 Recursos utilizados:
 

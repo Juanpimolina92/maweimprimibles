@@ -2,141 +2,171 @@ TAP version 13
 # Subtest: el catálogo contiene diseños únicos con imagen, alternativa y categoría
 ok 1 - el catálogo contiene diseños únicos con imagen, alternativa y categoría
   ---
-  duration_ms: 7.7812
+  duration_ms: 3.2315
+  type: 'test'
+  ...
+# Subtest: las imágenes se resuelven en el dominio y en una publicación bajo subcarpeta
+ok 2 - las imágenes se resuelven en el dominio y en una publicación bajo subcarpeta
+  ---
+  duration_ms: 0.6912
   type: 'test'
   ...
 # Subtest: ningún producto expone precio ni importe
-ok 2 - ningún producto expone precio ni importe
+ok 3 - ningún producto expone precio ni importe
   ---
-  duration_ms: 3.4786
+  duration_ms: 0.7058
   type: 'test'
   ...
 # Subtest: el filtro todos devuelve una copia sin modificar el catálogo
-ok 3 - el filtro todos devuelve una copia sin modificar el catálogo
+ok 4 - el filtro todos devuelve una copia sin modificar el catálogo
   ---
-  duration_ms: 1.8978
+  duration_ms: 2.0178
   type: 'test'
   ...
 # Subtest: cada categoría devuelve exactamente sus productos y una desconocida queda vacía
-ok 4 - cada categoría devuelve exactamente sus productos y una desconocida queda vacía
+ok 5 - cada categoría devuelve exactamente sus productos y una desconocida queda vacía
   ---
-  duration_ms: 0.5553
+  duration_ms: 0.392
   type: 'test'
   ...
 # Subtest: WhatsApp usa el número de Marieta y conserva caracteres de consulta con codificación segura
-ok 5 - WhatsApp usa el número de Marieta y conserva caracteres de consulta con codificación segura
+ok 6 - WhatsApp usa el número de Marieta y conserva caracteres de consulta con codificación segura
   ---
-  duration_ms: 0.6086
+  duration_ms: 0.3915
   type: 'test'
   ...
 # Subtest: la consulta por un diseño identifica el producto en el mensaje de WhatsApp
-ok 6 - la consulta por un diseño identifica el producto en el mensaje de WhatsApp
+ok 7 - la consulta por un diseño identifica el producto en el mensaje de WhatsApp
   ---
-  duration_ms: 1.1798
+  duration_ms: 0.6908
   type: 'test'
   ...
 # Subtest: el alias de Mercado Pago coincide exactamente con el autorizado
-ok 7 - el alias de Mercado Pago coincide exactamente con el autorizado
+ok 8 - el alias de Mercado Pago coincide exactamente con el autorizado
   ---
-  duration_ms: 0.2517
+  duration_ms: 0.2032
+  type: 'test'
+  ...
+# Subtest: Vercel publica exclusivamente dist y el artefacto no incluye código privado ni archivos de desarrollo
+ok 9 - Vercel publica exclusivamente dist y el artefacto no incluye código privado ni archivos de desarrollo
+  ---
+  duration_ms: 9.4605
+  type: 'test'
+  ...
+# Subtest: index.html y assets del repositorio coinciden byte por byte con la compilación dist
+ok 10 - index.html y assets del repositorio coinciden byte por byte con la compilación dist
+  ---
+  duration_ms: 248.3156
+  type: 'test'
+  ...
+# Subtest: la exportación estática resuelve HTML, imports JavaScript y fotos desde la raíz del dominio
+ok 11 - la exportación estática resuelve HTML, imports JavaScript y fotos desde la raíz del dominio
+  ---
+  duration_ms: 194.3597
+  type: 'test'
+  ...
+# Subtest: la exportación estática conserva recursos, imports y fotos bajo /maweimprimibles/
+ok 12 - la exportación estática conserva recursos, imports y fotos bajo /maweimprimibles/
+  ---
+  duration_ms: 110.3635
   type: 'test'
   ...
 # Subtest: la página servida identifica a Marieta y enlaza consultas y crédito correctos
-ok 8 - la página servida identifica a Marieta y enlaza consultas y crédito correctos
+ok 13 - la página servida identifica a Marieta y enlaza consultas y crédito correctos
   ---
-  duration_ms: 89.0998
+  duration_ms: 69.2562
   type: 'test'
   ...
 # Subtest: todos los recursos declarados por la página responden con un tipo correcto
-ok 9 - todos los recursos declarados por la página responden con un tipo correcto
+ok 14 - todos los recursos declarados por la página responden con un tipo correcto
   ---
-  duration_ms: 341.9302
+  duration_ms: 193.8482
   type: 'test'
   ...
 # Subtest: cada foto del catálogo real se sirve como imagen con contenido
-ok 10 - cada foto del catálogo real se sirve como imagen con contenido
+ok 15 - cada foto del catálogo real se sirve como imagen con contenido
   ---
-  duration_ms: 115.7911
+  duration_ms: 64.0887
   type: 'test'
   ...
 # Subtest: el documento contiene controles accesibles del catálogo, carrusel y alias
-ok 11 - el documento contiene controles accesibles del catálogo, carrusel y alias
+ok 16 - el documento contiene controles accesibles del catálogo, carrusel y alias
   ---
-  duration_ms: 15.4541
+  duration_ms: 5.7685
   type: 'test'
   ...
 # Subtest: el HTML y la aplicación no publican precios ni iniciación de cobros
-ok 12 - el HTML y la aplicación no publican precios ni iniciación de cobros
+ok 17 - el HTML y la aplicación no publican precios ni iniciación de cobros
   ---
-  duration_ms: 32.9902
+  duration_ms: 21.9069
   type: 'test'
   ...
 # Subtest: la comprobación de salud responde JSON y una ruta inexistente se rechaza
-ok 13 - la comprobación de salud responde JSON y una ruta inexistente se rechaza
+ok 18 - la comprobación de salud responde JSON y una ruta inexistente se rechaza
   ---
-  duration_ms: 12.7984
+  duration_ms: 6.4069
   type: 'test'
   ...
 # Subtest: HTML y JavaScript reciben protección contra ejecución externa y MIME sniffing
-ok 14 - HTML y JavaScript reciben protección contra ejecución externa y MIME sniffing
+ok 19 - HTML y JavaScript reciben protección contra ejecución externa y MIME sniffing
   ---
-  duration_ms: 147.5677
+  duration_ms: 105.05
   type: 'test'
   ...
 # Subtest: HEAD expone metadatos del recurso sin descargar el cuerpo
-ok 15 - HEAD expone metadatos del recurso sin descargar el cuerpo
+ok 20 - HEAD expone metadatos del recurso sin descargar el cuerpo
   ---
-  duration_ms: 9.167
+  duration_ms: 8.9134
   type: 'test'
   ...
 # Subtest: el límite de rutas permite nombres vendor con puntos internos sin permitir archivos ocultos
-ok 16 - el límite de rutas permite nombres vendor con puntos internos sin permitir archivos ocultos
+ok 21 - el límite de rutas permite nombres vendor con puntos internos sin permitir archivos ocultos
   ---
-  duration_ms: 21.3101
+  duration_ms: 13.5702
   type: 'test'
   ...
 # Subtest: rutas raw con traversal no exponen archivos fuera de dist
-ok 17 - rutas raw con traversal no exponen archivos fuera de dist
+ok 22 - rutas raw con traversal no exponen archivos fuera de dist
   ---
-  duration_ms: 24.6975
+  duration_ms: 18.3973
   type: 'test'
   ...
 # Subtest: archivos de entorno, fuentes privadas y rutas de cobro están fuera del servidor público
-ok 18 - archivos de entorno, fuentes privadas y rutas de cobro están fuera del servidor público
+ok 23 - archivos de entorno, fuentes privadas y rutas de cobro están fuera del servidor público
   ---
-  duration_ms: 15.2587
+  duration_ms: 19.382
   type: 'test'
   ...
 # Subtest: rutas mal codificadas y bytes de control se rechazan sin filtrar errores internos
-ok 19 - rutas mal codificadas y bytes de control se rechazan sin filtrar errores internos
+ok 24 - rutas mal codificadas y bytes de control se rechazan sin filtrar errores internos
   ---
-  duration_ms: 9.4086
+  duration_ms: 5.8042
   type: 'test'
   ...
 # Subtest: datos XSS de la query y del origen no se reflejan ni modifican la página
-ok 20 - datos XSS de la query y del origen no se reflejan ni modifican la página
+ok 25 - datos XSS de la query y del origen no se reflejan ni modifican la página
   ---
-  duration_ms: 7.0616
+  duration_ms: 4.1575
   type: 'test'
   ...
 # Subtest: métodos que podrían iniciar escrituras se rechazan y no habilitan cobros
-ok 21 - métodos que podrían iniciar escrituras se rechazan y no habilitan cobros
+ok 26 - métodos que podrían iniciar escrituras se rechazan y no habilitan cobros
   ---
-  duration_ms: 16.621
+  duration_ms: 14.9684
   type: 'test'
   ...
 # Subtest: el límite por IP no acepta X-Forwarded-For como identidad y recupera al caducar la ventana
-ok 22 - el límite por IP no acepta X-Forwarded-For como identidad y recupera al caducar la ventana
+ok 27 - el límite por IP no acepta X-Forwarded-For como identidad y recupera al caducar la ventana
   ---
-  duration_ms: 256.3712
+  duration_ms: 250.478
   type: 'test'
   ...
-1..22
-# tests 22
+1..27
+# tests 27
 # suites 0
-# pass 22
+# pass 27
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 1067.6823
+# duration_ms 823.5157

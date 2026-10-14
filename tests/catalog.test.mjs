@@ -15,10 +15,23 @@ test('el catálogo contiene diseños únicos con imagen, alternativa y categorí
   for (const product of products) {
     assert.match(product.id, /^[a-z0-9-]+$/);
     assert.ok(['kits', 'imprimibles', 'personalizados'].includes(product.category));
-    assert.match(product.image, /^\/assets\/[a-z0-9-]+\.(?:jpg|jpeg|png|webp)$/);
+    assert.match(product.image, /^\.\/assets\/[a-z0-9-]+\.(?:jpg|jpeg|png|webp)$/);
     for (const field of ['name', 'label', 'alt', 'description']) {
       assert.equal(typeof product[field], 'string');
       assert.ok(product[field].trim().length > 0, `${product.id}: falta ${field}`);
+    }
+  }
+});
+
+test('las imágenes se resuelven en el dominio y en una publicación bajo subcarpeta', () => {
+  for (const base of ['https://example.test/', 'https://example.test/mawe/']) {
+    const baseUrl = new URL(base);
+    for (const product of products) {
+      const imageUrl = new URL(product.image, base);
+      assert.equal(imageUrl.origin, baseUrl.origin);
+      assert.equal(imageUrl.pathname, `${baseUrl.pathname}assets/${product.image.split('/').at(-1)}`);
+      assert.equal(imageUrl.search, '');
+      assert.equal(imageUrl.hash, '');
     }
   }
 });

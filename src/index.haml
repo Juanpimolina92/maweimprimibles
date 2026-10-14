@@ -1,0 +1,235 @@
+!!! 5
+%html{lang: "es-AR"}
+  %head
+    %meta{charset: "utf-8"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    %meta{name: "description", content: "Soy Marieta y hago imprimibles, kits y demás cosas lindas. Explorá el catálogo de Mawe y consultame por WhatsApp para crear tu próximo festejo."}
+    %meta{name: "theme-color", content: "#f9d9e4"}
+    %title Mawe · Imprimibles y kits hechos con amor
+    %link{rel: "icon", href: "/assets/artwork-flower.svg", type: "image/svg+xml"}
+    %link{rel: "stylesheet", href: "/assets/vendor/bootstrap.min.css"}
+    %link{rel: "stylesheet", href: "/assets/vendor/aos.css"}
+    %link{rel: "stylesheet", href: "/assets/styles.css"}
+    %script{src: "/assets/vendor/bootstrap.bundle.min.js", defer: true}
+    %script{src: "/assets/vendor/aos.js", defer: true}
+    %script{src: "/assets/app.js", type: "module"}
+  %body
+    %a.skip-link{href: "#contenido"} Saltar al contenido
+    .announcement
+      %span{"aria-hidden": "true"} ✿
+      Cositas lindas para celebrar a tu manera
+      %span{"aria-hidden": "true"} ✿
+    %header.site-header
+      .container.header-inner
+        %a.brand{href: "#inicio", "aria-label": "Mawe, inicio"}
+          %span.brand-word mawe
+          %span.brand-caption el mundo lindo de Marieta
+        %button.menu-toggle{type: "button", "aria-label": "Abrir menú", "aria-expanded": "false", "aria-controls": "main-navigation"}
+          %span
+          %span
+        %nav#main-navigation.main-navigation{"aria-label": "Navegación principal"}
+          %a{href: "#catalogo"} El catálogo
+          %a{href: "#como-pedir"} Cómo pedir
+          %a{href: "#preguntas"} Preguntas
+          %a.nav-contact{href: "#contacto"} Hablemos
+    %main#contenido
+      %section#inicio.hero{"aria-labelledby": "hero-title"}
+        .container.hero-grid
+          .hero-copy
+            %span.eyebrow
+              %span.tiny-flower{"aria-hidden": "true"} ✿
+              IMPRESO CON AMOR, PENSADO PARA VOS
+            %h1#hero-title
+              Soy Marieta
+              %span.title-underlined y hago
+              %span.hero-title-last imprimibles,
+              %span.hero-title-last kits y demás
+              %span.hero-title-last cosas lindas.
+            %p.hero-intro Pequeños detalles para convertir tu idea en un festejo muy tuyo.
+            .hero-actions
+              %a.button.button-primary{href: "#catalogo"}
+                Mirá el catálogo
+                %span{"aria-hidden": "true"} ↗
+              %a.text-link.whatsapp-link{href: "https://wa.me/5492646241204?text=%C2%A1Hola%20Marieta!%20Vi%20tu%20cat%C3%A1logo%20de%20Mawe%20y%20quer%C3%ADa%20hacerte%20una%20consulta.", target: "_blank", rel: "noopener noreferrer"}
+                Contame tu idea
+                %span{"aria-hidden": "true"} ↗
+            .hero-note
+              %span.note-line{"aria-hidden": "true"}
+              %span Con un poquito de papel y mucha imaginación.
+          .hero-art{"aria-label": "Una muestra de los diseños de Mawe"}
+            .hero-orbit{"aria-hidden": "true"}
+            %img.hero-flower{src: "/assets/artwork-flower.svg", alt: "", width: "130", height: "130"}
+            .hero-photo.hero-photo-main
+              .photo-tape{"aria-hidden": "true"}
+              %img{src: "/assets/catalog-01.jpg", alt: "Una muestra de los kits y diseños personalizados de Mawe", width: "640", height: "640", fetchpriority: "high"}
+              %span.photo-caption una idea, mil detalles ♡
+            .hero-photo.hero-photo-small
+              %img{src: "/assets/catalog-03.jpg", alt: "Kit de dibujos para un cumpleaños creado por Mawe", width: "360", height: "360", loading: "lazy"}
+              %span.photo-caption hecho con amor
+            .hero-sticker{"aria-hidden": "true"}
+              %span diseñado
+              %strong para vos
+              %span ♡
+            .handwritten.hero-handwritten tu próximo festejo empieza acá
+      .values-strip{"aria-label": "Diseños de Mawe"}
+        .container.values-inner
+          %span diseños personalizados
+          %span.strip-flower{"aria-hidden": "true"} ✿
+          %span detalles con amor
+          %span.strip-flower{"aria-hidden": "true"} ✿
+          %span momentos para guardar
+          %span.strip-flower{"aria-hidden": "true"} ✿
+          %span mucha imaginación
+      %section#catalogo.catalog.section-space{"aria-labelledby": "catalog-title"}
+        .container
+          .section-heading{"data-aos": "fade-up"}
+            .heading-copy
+              %span.eyebrow UN POQUITO DE MI MUNDO
+              %h2#catalog-title El catálogo de cosas lindas
+              %p Elegí el diseño que te guste y contame qué estás imaginando.
+            %span.handwritten.catalog-note todo empieza con una idea ♡
+          .catalog-tools
+            .filter-list{role: "group", "aria-label": "Filtrar el catálogo"}
+              %button.filter-button.is-active{type: "button", "data-category": "todos", "aria-pressed": "true"} Ver todo
+              %button.filter-button{type: "button", "data-category": "kits", "aria-pressed": "false"} Kits
+              %button.filter-button{type: "button", "data-category": "imprimibles", "aria-pressed": "false"} Imprimibles
+              %button.filter-button{type: "button", "data-category": "personalizados", "aria-pressed": "false"} Personalizados
+            %span#catalog-count.catalog-count{"aria-live": "polite", "aria-atomic": "true"} 10 diseños para inspirarte
+          #catalog-grid.catalog-grid
+          %noscript
+            %p Sin JavaScript podés conocer los diseños y consultarme en Instagram o WhatsApp.
+            %a.button.button-primary{href: "https://www.instagram.com/mawe_kits/", target: "_blank", rel: "noopener noreferrer"} Ver diseños en Instagram
+          .catalog-bottom
+            %span{"aria-hidden": "true"} ♡
+            %p ¿Tenés otra idea en mente? Me encanta escucharla.
+            %a.text-link.whatsapp-link{href: "https://wa.me/5492646241204", target: "_blank", rel: "noopener noreferrer"} Armemos algo juntas ↗
+      %section.inspiration{"aria-labelledby": "inspiration-title"}
+        .container.inspiration-grid
+          .inspiration-copy{"data-aos": "fade-up"}
+            %span.eyebrow CADA DETALLE CUENTA
+            %h2#inspiration-title
+              Un festejo que
+              %em se sienta tuyo.
+            %p Colores, personajes, nombres y esas pequeñas ideas que lo hacen especial. Mirá un poquito de lo que podemos crear.
+            %a.text-link{href: "https://www.instagram.com/mawe_kits/", target: "_blank", rel: "noopener noreferrer"} Más inspiración en Instagram ↗
+          #design-carousel.carousel.slide{"data-bs-interval": "false", "aria-label": "Galería de diseños", "aria-roledescription": "carrusel"}
+            .carousel-inner
+              .carousel-item.active{role: "group", "aria-roledescription": "diapositiva", "aria-label": "1 de 3"}
+                %img{src: "/assets/catalog-01.jpg", alt: "Kit de cumpleaños de Frozen personalizado para Isabella", width: "700", height: "700", loading: "lazy"}
+                .slide-caption
+                  %span DETALLES QUE ENAMORAN
+                  %strong Un poquito de magia en papel
+              .carousel-item{role: "group", "aria-roledescription": "diapositiva", "aria-label": "2 de 3"}
+                %img{src: "/assets/catalog-03.jpg", alt: "Kit de dibujos para el cumpleaños de Dayana", width: "700", height: "700", loading: "lazy"}
+                .slide-caption
+                  %span IDEAS A TU MEDIDA
+                  %strong Tu historia también se diseña
+              .carousel-item{role: "group", "aria-roledescription": "diapositiva", "aria-label": "3 de 3"}
+                %img{src: "/assets/catalog-12.jpg", alt: "Portadas escolares con diseños de fútbol y Argentina", width: "700", height: "700", loading: "lazy"}
+                .slide-caption
+                  %span HECHO CON MUCHO AMOR
+                  %strong Para momentos que se guardan
+            .carousel-bottom
+              .carousel-indicators
+                %button.active{type: "button", "data-bs-target": "#design-carousel", "data-bs-slide-to": "0", "aria-current": "true", "aria-label": "Ver diseño 1"}
+                %button{type: "button", "data-bs-target": "#design-carousel", "data-bs-slide-to": "1", "aria-label": "Ver diseño 2"}
+                %button{type: "button", "data-bs-target": "#design-carousel", "data-bs-slide-to": "2", "aria-label": "Ver diseño 3"}
+              .carousel-arrows
+                %button.carousel-prev{type: "button", "data-bs-target": "#design-carousel", "data-bs-slide": "prev", "aria-label": "Diseño anterior"} ←
+                %button.carousel-next{type: "button", "data-bs-target": "#design-carousel", "data-bs-slide": "next", "aria-label": "Diseño siguiente"} →
+      %section#como-pedir.how-to.section-space{"aria-labelledby": "how-title"}
+        .container
+          .section-heading.centered{"data-aos": "fade-up"}
+            %span.eyebrow DE TU IDEA A LAS MANOS
+            %h2#how-title Así hacemos algo lindo
+            %p Fácil, cercano y con un montón de amor en cada paso.
+          .steps-grid
+            %article.step-card.step-pink{"data-aos": "fade-up"}
+              .step-top
+                %span.step-number 01
+                %span.step-doodle{"aria-hidden": "true"} ♡
+              %h3 Me contás tu idea
+              %p Elegí un diseño del catálogo o escribime qué tenés en mente. Contame la temática, la fecha y qué necesitás.
+            %article.step-card.step-yellow{"data-aos": "fade-up", "data-aos-delay": "70"}
+              .step-top
+                %span.step-number 02
+                %span.step-doodle{"aria-hidden": "true"} ✿
+              %h3 Le damos tu toque
+              %p Conversamos por WhatsApp y acordamos los detalles, el formato, el plazo y el importe de tu pedido.
+            %article.step-card.step-blue{"data-aos": "fade-up", "data-aos-delay": "140"}
+              .step-top
+                %span.step-number 03
+                %span.step-doodle{"aria-hidden": "true"} ✧
+              %h3 Lo hacemos realidad
+              %p Una vez confirmado el pedido, coordinamos el pago y la entrega. ¡Y empieza la parte más linda!
+          .payment-note
+            %span.payment-symbol{"aria-hidden": "true"} ↗
+            .payment-note-copy
+              %strong ¿Ya coordinamos tu pedido?
+              %span Podés ver cómo pagar con Mercado Pago.
+            %button.text-link{type: "button", "data-open-payment": "true"} Ver cómo pagar ↗
+      %section#preguntas.faq.section-space{"aria-labelledby": "faq-title"}
+        .container.faq-grid
+          .faq-heading{"data-aos": "fade-up"}
+            %span.eyebrow POR SI TE LO PREGUNTABAS
+            %h2#faq-title Algunas dudas, resueltas.
+            %p Y si tenés otra, estoy del otro lado de WhatsApp.
+            %span.handwritten.faq-note charlamos y lo vemos ♡
+          .faq-list
+            %details
+              %summary ¿Puedo personalizar un diseño?
+              %p ¡Contame tu idea! Podemos conversar sobre nombres, colores y temáticas para ver qué es posible en tu pedido.
+            %details
+              %summary ¿Son archivos digitales o productos impresos?
+              %p Consultame por el diseño que te interesa. Te cuento qué formatos están disponibles y coordinamos la opción que necesitás.
+            %details
+              %summary ¿Con cuánto tiempo tengo que pedir?
+              %p Escribime con la fecha de tu festejo. El plazo depende de lo que quieras crear y lo acordamos antes de confirmar el pedido.
+            %details
+              %summary ¿Cómo pago mi pedido?
+              %p Primero coordinamos los detalles y el importe por WhatsApp. Después podés transferir con Mercado Pago usando el alias marie.pezzutti.mp.
+      %section#contacto.contact-section{"aria-labelledby": "contact-title"}
+        .container.contact-inner
+          %img.contact-flower{src: "/assets/artwork-flower.svg", alt: "", width: "100", height: "100"}
+          %span.eyebrow AHORA TE TOCA IMAGINAR A VOS
+          %h2#contact-title ¿Hacemos algo lindo?
+          %p Contame qué querés celebrar. Juntas le damos forma.
+          %a.button.button-dark.whatsapp-link{href: "https://wa.me/5492646241204", target: "_blank", rel: "noopener noreferrer"}
+            Escribime por WhatsApp
+            %span{"aria-hidden": "true"} ↗
+          %span.contact-phone 264 624 1204
+          %a.contact-instagram{href: "https://www.instagram.com/mawe_kits/", target: "_blank", rel: "noopener noreferrer"} También me encontrás en @mawe_kits ↗
+    %footer.site-footer
+      .container.footer-main
+        %a.brand.footer-brand{href: "#inicio", "aria-label": "Mawe, volver al inicio"}
+          %span.brand-word mawe
+          %span.brand-caption hecho con amor por Marieta
+        %p Imprimibles, kits y cositas lindas para celebrar.
+        %a.text-link{href: "https://www.instagram.com/mawe_kits/", target: "_blank", rel: "noopener noreferrer"} Instagram ↗
+      .container.footer-credit
+        %span © Mawe · Marieta
+        .developer-credit
+          %span Desarrollado por Juan Pablo Molina
+          %a#developer-github{href: "https://github.com/Juanpimolina92", target: "_blank", rel: "noopener noreferrer"} GitHub ↗
+    %dialog#product-dialog.product-dialog{"aria-labelledby": "product-dialog-title"}
+      %button.dialog-close{type: "button", "data-close-dialog": "true", "aria-label": "Cerrar detalle del diseño"} ×
+      .product-dialog-grid
+        %img#product-dialog-image{src: "/assets/catalog-01.jpg", alt: "", width: "600", height: "600"}
+        .product-dialog-copy
+          %span#product-dialog-label.eyebrow
+          %h2#product-dialog-title
+          %p#product-dialog-description
+          %p.product-dialog-note Contame cuándo es tu festejo y qué necesitás. Los detalles de tu pedido los acordamos por WhatsApp.
+          %a#product-dialog-whatsapp.button.button-primary{target: "_blank", rel: "noopener noreferrer"} Consultar por este diseño ↗
+    %dialog#payment-dialog.payment-dialog{"aria-labelledby": "payment-title", "aria-describedby": "payment-description"}
+      %button.dialog-close{type: "button", "data-close-dialog": "true", "aria-label": "Cerrar información de pago"} ×
+      %span.eyebrow TU PEDIDO, UN PASITO MÁS CERCA
+      %h2#payment-title Datos para tu transferencia
+      %p#payment-description Antes de pagar, coordiná tu pedido y su importe conmigo por WhatsApp.
+      .alias-card
+        %span Alias para transferir
+        %strong#payment-alias marie.pezzutti.mp
+        %button#copy-alias.copy-button{type: "button"} Copiar alias
+      %p.transfer-instructions Ingresá este alias en Mercado Pago y verificá los datos de la persona destinataria antes de confirmar la transferencia.
+      %p#payment-status.payment-status{role: "status", "aria-live": "polite"}
+      %a.text-link.whatsapp-link{href: "https://wa.me/5492646241204", target: "_blank", rel: "noopener noreferrer"} Consultame por tu pedido ↗

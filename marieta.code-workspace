@@ -1,0 +1,5 @@
+{
+  "folders": [{"path":"."}],
+  "settings": {"files.associations":{"*.haml":"haml"},"editor.tabSize":2,"editor.formatOnSave":false},
+  "extensions": {"recommendations":["vayan.haml"]}
+}

@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: el catálogo contiene diseños únicos con imagen, alternativa y categoría
+ok 1 - el catálogo contiene diseños únicos con imagen, alternativa y categoría
+  ---
+  duration_ms: 7.7812
+  type: 'test'
+  ...
+# Subtest: ningún producto expone precio ni importe
+ok 2 - ningún producto expone precio ni importe
+  ---
+  duration_ms: 3.4786
+  type: 'test'
+  ...
+# Subtest: el filtro todos devuelve una copia sin modificar el catálogo
+ok 3 - el filtro todos devuelve una copia sin modificar el catálogo
+  ---
+  duration_ms: 1.8978
+  type: 'test'
+  ...
+# Subtest: cada categoría devuelve exactamente sus productos y una desconocida queda vacía
+ok 4 - cada categoría devuelve exactamente sus productos y una desconocida queda vacía
+  ---
+  duration_ms: 0.5553
+  type: 'test'
+  ...
+# Subtest: WhatsApp usa el número de Marieta y conserva caracteres de consulta con codificación segura
+ok 5 - WhatsApp usa el número de Marieta y conserva caracteres de consulta con codificación segura
+  ---
+  duration_ms: 0.6086
+  type: 'test'
+  ...
+# Subtest: la consulta por un diseño identifica el producto en el mensaje de WhatsApp
+ok 6 - la consulta por un diseño identifica el producto en el mensaje de WhatsApp
+  ---
+  duration_ms: 1.1798
+  type: 'test'
+  ...
+# Subtest: el alias de Mercado Pago coincide exactamente con el autorizado
+ok 7 - el alias de Mercado Pago coincide exactamente con el autorizado
+  ---
+  duration_ms: 0.2517
+  type: 'test'
+  ...
+# Subtest: la página servida identifica a Marieta y enlaza consultas y crédito correctos
+ok 8 - la página servida identifica a Marieta y enlaza consultas y crédito correctos
+  ---
+  duration_ms: 89.0998
+  type: 'test'
+  ...
+# Subtest: todos los recursos declarados por la página responden con un tipo correcto
+ok 9 - todos los recursos declarados por la página responden con un tipo correcto
+  ---
+  duration_ms: 341.9302
+  type: 'test'
+  ...
+# Subtest: cada foto del catálogo real se sirve como imagen con contenido
+ok 10 - cada foto del catálogo real se sirve como imagen con contenido
+  ---
+  duration_ms: 115.7911
+  type: 'test'
+  ...
+# Subtest: el documento contiene controles accesibles del catálogo, carrusel y alias
+ok 11 - el documento contiene controles accesibles del catálogo, carrusel y alias
+  ---
+  duration_ms: 15.4541
+  type: 'test'
+  ...
+# Subtest: el HTML y la aplicación no publican precios ni iniciación de cobros
+ok 12 - el HTML y la aplicación no publican precios ni iniciación de cobros
+  ---
+  duration_ms: 32.9902
+  type: 'test'
+  ...
+# Subtest: la comprobación de salud responde JSON y una ruta inexistente se rechaza
+ok 13 - la comprobación de salud responde JSON y una ruta inexistente se rechaza
+  ---
+  duration_ms: 12.7984
+  type: 'test'
+  ...
+# Subtest: HTML y JavaScript reciben protección contra ejecución externa y MIME sniffing
+ok 14 - HTML y JavaScript reciben protección contra ejecución externa y MIME sniffing
+  ---
+  duration_ms: 147.5677
+  type: 'test'
+  ...
+# Subtest: HEAD expone metadatos del recurso sin descargar el cuerpo
+ok 15 - HEAD expone metadatos del recurso sin descargar el cuerpo
+  ---
+  duration_ms: 9.167
+  type: 'test'
+  ...
+# Subtest: el límite de rutas permite nombres vendor con puntos internos sin permitir archivos ocultos
+ok 16 - el límite de rutas permite nombres vendor con puntos internos sin permitir archivos ocultos
+  ---
+  duration_ms: 21.3101
+  type: 'test'
+  ...
+# Subtest: rutas raw con traversal no exponen archivos fuera de dist
+ok 17 - rutas raw con traversal no exponen archivos fuera de dist
+  ---
+  duration_ms: 24.6975
+  type: 'test'
+  ...
+# Subtest: archivos de entorno, fuentes privadas y rutas de cobro están fuera del servidor público
+ok 18 - archivos de entorno, fuentes privadas y rutas de cobro están fuera del servidor público
+  ---
+  duration_ms: 15.2587
+  type: 'test'
+  ...
+# Subtest: rutas mal codificadas y bytes de control se rechazan sin filtrar errores internos
+ok 19 - rutas mal codificadas y bytes de control se rechazan sin filtrar errores internos
+  ---
+  duration_ms: 9.4086
+  type: 'test'
+  ...
+# Subtest: datos XSS de la query y del origen no se reflejan ni modifican la página
+ok 20 - datos XSS de la query y del origen no se reflejan ni modifican la página
+  ---
+  duration_ms: 7.0616
+  type: 'test'
+  ...
+# Subtest: métodos que podrían iniciar escrituras se rechazan y no habilitan cobros
+ok 21 - métodos que podrían iniciar escrituras se rechazan y no habilitan cobros
+  ---
+  duration_ms: 16.621
+  type: 'test'
+  ...
+# Subtest: el límite por IP no acepta X-Forwarded-For como identidad y recupera al caducar la ventana
+ok 22 - el límite por IP no acepta X-Forwarded-For como identidad y recupera al caducar la ventana
+  ---
+  duration_ms: 256.3712
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1067.6823

@@ -1,0 +1,25 @@
+{
+  "name": "marieta-mawe-landing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Catálogo de imprimibles y kits de Marieta",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node src/server.mjs",
+    "dev": "npm run build && npm start",
+    "test": "node --test tests/*.test.mjs",
+    "test:unit": "node --test tests/catalog.test.mjs",
+    "test:functional": "node --test tests/functional.test.mjs",
+    "test:security": "node --test tests/security.test.mjs"
+  },
+  "dependencies": {
+    "aos": "2.3.4",
+    "bootstrap": "5.3.8"
+  },
+  "devDependencies": {
+    "hamljs": "0.6.2",
+    "sass": "1.93.2"
+  }
+}

@@ -2,6 +2,7 @@ export const WHATSAPP_NUMBER = '5492646241204';
 export const PAYMENT_ALIAS = 'marie.pezzutti.mp';
 
 export const products = Object.freeze([
+  { id: 'cat-mom-colorear', name: 'Cat Mom · Un ratito para colorear', category: 'imprimibles', tags: ['colorear'], label: 'Imprimibles para colorear', image: './assets/coloring-cover.jpeg', alt: 'Portada Cat Mom: ilustraciones de una mujer y sus gatitos', description: 'Un cuadernillo para disfrutar de un ratito de color entre gatitos y detalles tiernos. Mirá la portada y una muestra del interior; consultame por el formato disponible para tu pedido.', color: 'pink', gallery: [{ src: './assets/coloring-cover.jpeg', alt: 'Portada ilustrada de Cat Mom', label: 'Ver portada' }, { src: './assets/coloring-pages.jpeg', alt: 'Interior Cat Mom con gatitos, corazones y huellitas para colorear', label: 'Ver interior' }] },
   { id: 'kit-frozen', name: 'Un festejo de Frozen', category: 'kits', label: 'Kit de cumpleaños', image: './assets/catalog-01.jpg', alt: 'Kit de cumpleaños Frozen personalizado con el nombre Isabella', description: 'Una temática llena de magia para acompañar ese día tan especial. Consultame por las piezas y opciones de personalización.', color: 'blue' },
   { id: 'kit-dibujos', name: 'Un cumple lleno de color', category: 'kits', label: 'Kit de cumpleaños', image: './assets/catalog-03.jpg', alt: 'Kit de dibujos para el cumpleaños de Dayana', description: 'Un kit de dibujos para sumar color al cumpleaños. Escribime para consultar por el contenido y las opciones para tu festejo.', color: 'pink' },
   { id: 'etiquetas-mickey', name: 'Mickey va a la escuela', category: 'imprimibles', label: 'Etiquetas escolares', image: './assets/catalog-04.jpg', alt: 'Etiquetas escolares de Mickey personalizadas', description: 'Etiquetas con temática Mickey para identificar útiles escolares. Consultame por las opciones de nombres y formatos.', color: 'yellow' },
@@ -15,6 +16,7 @@ export const products = Object.freeze([
 ]);
 
 export function filterProducts(items, category = 'todos') {
+  if (category === 'colorear') return items.filter(item => item.tags?.includes('colorear'));
   return category === 'todos' ? [...items] : items.filter((item) => item.category === category);
 }
 

@@ -1,0 +1,192 @@
+{
+  "url": "https://maweimprimibles.vercel.app/",
+  "time": "2026-10-14T11:10:56.556Z",
+  "scope": "Public static resources, matching local build, configured headers and private-path isolation; no payment or external attacks",
+  "checks": [
+    {
+      "resource": "./index.html",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "sha256": "7144209836e66d62b270c6457ed51f1ea5147f044810e375f14e73a72ba5f661",
+      "pass": true
+    },
+    {
+      "resource": "./assets/artwork-flower.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "sha256": "11060fdc7a54fbe50a1204e9b3ce35804c230dd53722b477703ea295222e4054",
+      "pass": true
+    },
+    {
+      "resource": "./assets/vendor/bootstrap.min.css",
+      "status": 200,
+      "type": "text/css; charset=utf-8",
+      "sha256": "d85327d99c7a3ee1f9b5d0500d1370acea3ad2db39c163c2f51f232baedbdede",
+      "pass": true
+    },
+    {
+      "resource": "./assets/vendor/aos.css",
+      "status": 200,
+      "type": "text/css; charset=utf-8",
+      "sha256": "1aa8845fd06e475aefe733d4e55b36a92fcd487975049c8172341827ac9cc03e",
+      "pass": true
+    },
+    {
+      "resource": "./assets/styles.css",
+      "status": 200,
+      "type": "text/css; charset=utf-8",
+      "sha256": "91350b548abd9fce0a1d4fba5431b6216fe0c70c23d75587c11f3f853a9376b3",
+      "pass": true
+    },
+    {
+      "resource": "./assets/vendor/bootstrap.bundle.min.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "sha256": "e4fd49181388c48ec5040bd3fe66f57c29c8e67fcd8502b3354b96ec7ab47cc7",
+      "pass": true
+    },
+    {
+      "resource": "./assets/vendor/aos.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "sha256": "a5005b2e414770fd5ccb40bc221a12771966d02b5c1f9c89da48bd8e3811d377",
+      "pass": true
+    },
+    {
+      "resource": "./assets/app.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "sha256": "4441906717dfb1e9ad7ca467015efcf465c0736dbd04a6b73e12ee4cf92729eb",
+      "pass": true
+    },
+    {
+      "resource": "./assets/catalog-01.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "sha256": "56fddec15fe7a510b9198eaa3756c01957518e0662582a4b44cf57e7bd71dc3b",
+      "pass": true
+    },
+    {
+      "resource": "./assets/catalog-03.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "sha256": "61b14276503eea409dcbc4e1e5236ec34b897907d7d298bef49010ba9397eb8b",
+      "pass": true
+    },
+    {
+      "resource": "./assets/catalog-12.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "sha256": "aeb64fa61f10d876a7dac58976a8721a28303dd716459a6d8023606750a19e6f",
+      "pass": true
+    },
+    {
+      "resource": "./assets/catalog.js",
+      "status": 200,
+      "type": "application/javascript; charset=utf-8",
+      "sha256": "2848c4dff998787d359719d82080934f777c9d70b29ff705c0533a9d3bb620c1",
+      "pass": true
+    },
+    {
+      "resource": "./assets/catalog-04.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "sha256": "2b41dc16ecc52d0943219abe1eac7e75c3ec2934e7d13a1bd7eb8963773d145e",
+      "pass": true
+    },
+    {
+      "resource": "./assets/catalog-05.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "sha256": "0e9a98072a1b8e6e560dae704ca818a70f23081f2e594ac0281d3b4823656e63",
+      "pass": true
+    },
+    {
+      "resource": "./assets/catalog-06.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "sha256": "ce0fe86cb158e30146b2b30c9db45b05501f70d4cc0ae8a22dc6e87b2afb6f10",
+      "pass": true
+    },
+    {
+      "resource": "./assets/catalog-08.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "sha256": "944a0a28da5350b35455cadc8069582714c479f8803ca3a1cb8714e04208878f",
+      "pass": true
+    },
+    {
+      "resource": "./assets/catalog-09.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "sha256": "a690936f3a9d86fb0453ecbbca77ca55aa93e42f9e165fe411ea1cd3c531680e",
+      "pass": true
+    },
+    {
+      "resource": "./assets/catalog-10.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "sha256": "bff0bd9c46e26f5a036296fa07ce2443826819daca87b9abfd4a46d6d0e2a685",
+      "pass": true
+    },
+    {
+      "resource": "./assets/catalog-11.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "sha256": "ebb6b8699e6d7a15a30830d562f33fddbf7a7c4f90e9e86edf3a4fbfc2b27cfa",
+      "pass": true
+    },
+    {
+      "resource": "/",
+      "status": 200,
+      "pass": true
+    },
+    {
+      "header": "Content-Security-Policy",
+      "actual": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'",
+      "pass": true
+    },
+    {
+      "header": "X-Content-Type-Options",
+      "actual": "nosniff",
+      "pass": true
+    },
+    {
+      "header": "X-Frame-Options",
+      "actual": "DENY",
+      "pass": true
+    },
+    {
+      "header": "Referrer-Policy",
+      "actual": "strict-origin-when-cross-origin",
+      "pass": true
+    },
+    {
+      "header": "Permissions-Policy",
+      "actual": "camera=(), microphone=(), geolocation=()",
+      "pass": true
+    },
+    {
+      "resource": "/.env",
+      "status": 404,
+      "pass": true
+    },
+    {
+      "resource": "/src/server.mjs",
+      "status": 404,
+      "pass": true
+    },
+    {
+      "resource": "/src/index.haml",
+      "status": 404,
+      "pass": true
+    },
+    {
+      "resource": "/reports/verification.md",
+      "status": 404,
+      "pass": true
+    }
+  ],
+  "passed": 29,
+  "failed": 0
+}

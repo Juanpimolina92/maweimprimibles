@@ -2,7 +2,7 @@
 
 14 de octubre de 2026 — Argentina.
 
-**Verificación local aprobada.** Reality Checker reprodujo las pruebas y abrió las capturas actuales. No sobreviven problemas confirmados del código ni del artefacto local. La nueva versión de Vercel queda pendiente del push autorizado y de su comprobación posterior; este informe no certifica producción.
+**Verificación local y del sitio publicado aprobada.** Reality Checker reprodujo las pruebas y abrió las capturas actuales. Después del push se comprobó la versión activa en https://maweimprimibles.vercel.app/. No sobreviven problemas confirmados dentro del alcance probado.
 
 ## Puertas y evidencia
 
@@ -14,12 +14,13 @@
 | Seguridad local | 9/9 aprobadas | Traversal raw, archivos privados, métodos, CSP, MIME, XSS de query/origen y límite por IP |
 | Artefacto estático | 4/4 aprobadas | Export de raíz idéntico a dist/; recursos, imports y fotos en / y /maweimprimibles/ |
 | Navegador local | 19 comprobaciones aprobadas | [Registro de navegador](browser-verification.json) y capturas actuales |
+| Navegador en Vercel | 6 comprobaciones aprobadas | Carga, filtro, detalle/WhatsApp, catálogo completo, carrusel y copia exacta del alias |
 | Dependencias | 0 alertas notificadas | [Auditoría npm del 13 de octubre](dependency-audit.json); las dependencias no cambiaron en esta corrección |
-| Vercel publicado | Pendiente después del push | La configuración publica exclusivamente dist/; falta verificar la versión activa |
+| Vercel publicado | 29/29 comprobaciones aprobadas | [Registro HTTPS](live-verification.json): HTML y recursos idénticos al build local, cabeceras configuradas y rutas privadas con 404 |
 
 La reejecución independiente de node --test tests/*.test.mjs aprobó **27/27**, con **0 fallos y 0 omisiones**; duración observada **760,6299 ms**. El [registro de la ejecución de raíz](tests.tap) coincide en 27 aprobadas, con duración propia de 823,5157 ms. Code Reviewer también reprodujo las 4 pruebas de despliegue.
 
-El JSON de navegador conserva 20 intentos: 19 aprobados y un primer clic de filtro que coincidió con el desplazamiento automático. La reejecución con el control visible e input nativo comprobó 2 productos y aria-pressed="true"; el intento inicial tiene una resolución explícita, no se ocultó como aprobado.
+El JSON de navegador conserva 26 intentos: 25 aprobados (19 locales y 6 en Vercel) y un primer clic de filtro que coincidió con el desplazamiento automático. La reejecución con el control visible e input nativo comprobó 2 productos y aria-pressed="true"; el intento inicial tiene una resolución explícita, no se ocultó como aprobado.
 
 ## Evidencia visual y recorridos
 

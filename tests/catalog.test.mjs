@@ -20,6 +20,11 @@ test('el catálogo contiene diseños únicos con imagen, alternativa y categorí
       assert.equal(typeof product[field], 'string');
       assert.ok(product[field].trim().length > 0, `${product.id}: falta ${field}`);
     }
+    for (const image of product.gallery ?? []) {
+      assert.match(image.src, /^\.\/assets\/[a-z0-9-]+\.(?:jpg|jpeg|png|webp)$/);
+      assert.equal(typeof image.alt, 'string');
+      assert.ok(image.alt.trim().length > 0, `${product.id}: imagen de galería sin alternativa`);
+    }
   }
 });
 
@@ -27,11 +32,13 @@ test('las imágenes se resuelven en el dominio y en una publicación bajo subcar
   for (const base of ['https://example.test/', 'https://example.test/mawe/']) {
     const baseUrl = new URL(base);
     for (const product of products) {
-      const imageUrl = new URL(product.image, base);
-      assert.equal(imageUrl.origin, baseUrl.origin);
-      assert.equal(imageUrl.pathname, `${baseUrl.pathname}assets/${product.image.split('/').at(-1)}`);
-      assert.equal(imageUrl.search, '');
-      assert.equal(imageUrl.hash, '');
+      for (const source of [product.image, ...(product.gallery ?? []).map((image) => image.src)]) {
+        const imageUrl = new URL(source, base);
+        assert.equal(imageUrl.origin, baseUrl.origin);
+        assert.equal(imageUrl.pathname, `${baseUrl.pathname}assets/${source.split('/').at(-1)}`);
+        assert.equal(imageUrl.search, '');
+        assert.equal(imageUrl.hash, '');
+      }
     }
   }
 });
@@ -56,6 +63,21 @@ test('cada categoría devuelve exactamente sus productos y una desconocida queda
     assert.deepEqual(filterProducts(products, category), products.filter((product) => product.category === category));
   }
   assert.deepEqual(filterProducts(products, 'categoría inexistente'), []);
+});
+
+test('CAT MOM incluye portada e interior y el filtro colorear conserva su categoría de imprimible', () => {
+  const coloring = products.find((product) => product.id === 'cat-mom-colorear');
+  assert.ok(coloring, 'Debe existir el nuevo imprimible CAT MOM');
+  assert.equal(coloring.category, 'imprimibles');
+  assert.ok(coloring.tags.includes('colorear'));
+  assert.equal(coloring.image, './assets/coloring-cover.jpeg');
+  assert.deepEqual(coloring.gallery.map((image) => image.src), ['./assets/coloring-cover.jpeg', './assets/coloring-pages.jpeg']);
+  assert.match(coloring.gallery[0].alt, /portada/i);
+  assert.match(coloring.gallery[1].alt, /interior/i);
+  const expected = products.filter((product) => product.tags?.includes('colorear'));
+  assert.ok(expected.length > 0);
+  assert.deepEqual(filterProducts(products, 'colorear'), expected);
+  assert.ok(filterProducts(products, 'imprimibles').includes(coloring));
 });
 
 test('WhatsApp usa el número de Marieta y conserva caracteres de consulta con codificación segura', () => {

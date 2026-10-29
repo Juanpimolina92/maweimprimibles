@@ -40,6 +40,34 @@ test('la página servida identifica a Marieta y enlaza consultas y crédito corr
   assert.match(html, /href=["']https:\/\/www\.instagram\.com\/mawe_kits\/["']/);
 });
 
+test('el hero React llega renderizado en HTML con título, consultas e imágenes antes de ejecutar JavaScript', async () => {
+  const html = await (await fetch(origin)).text();
+  assert.equal([...html.matchAll(/<h1\b/g)].length, 1, 'El documento debe tener un único título principal');
+  const sectionStart = html.search(/<section\b[^>]*id=["']inicio["'][^>]*>/);
+  assert.ok(sectionStart >= 0);
+  const sectionEnd = html.indexOf('</section>', sectionStart);
+  assert.ok(sectionEnd > sectionStart);
+  const hero = html.slice(sectionStart, sectionEnd);
+  assert.match(hero, /id=["']hero-react-root["']/);
+  assert.match(hero, /<h1\b[^>]*id=["']hero-title["']/);
+  assert.match(hero.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' '), /Soy Marieta.*imprimibles,.*kits y demás.*cosas lindas/);
+  assert.match(hero, /href=["']#catalogo["']/);
+  assert.match(hero, /https:\/\/wa\.me\/5492646241204/);
+  assert.match(hero, /data-catalog-filter=["']colorear["']/);
+  assert.match(hero, /src=["']\.\/assets\/coloring-cover\.jpeg["']/);
+  assert.match(hero, /src=["']\.\/assets\/coloring-pages\.jpeg["']/);
+  assert.doesNotMatch(hero, /&lt;(?:div|h1|img)|<noscript\b/, 'El hero debe ser HTML real y no una alternativa oculta o escapada');
+  const scripts = [...html.matchAll(/<script\b[^>]*src=["']([^"']+)["'][^>]*>/g)].map((match) => match[1]);
+  assert.ok(scripts.includes('./assets/hero.js'), 'La hidratación debe tener un bundle local');
+  for (const source of scripts) {
+    assert.equal(new URL(source, `${origin}/`).origin, origin, `Script de un proveedor externo: ${source}`);
+  }
+  const response = await fetch(`${origin}/assets/hero.js`);
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get('content-type'), /(?:text|application)\/javascript/);
+  assert.ok((await response.arrayBuffer()).byteLength > 0);
+});
+
 test('todos los recursos declarados por la página responden con un tipo correcto', async () => {
   const html = await (await fetch(origin)).text();
   const assetPaths = [...new Set([...html.matchAll(/(?:src|href)=["']((?:\.\/|\/)assets\/[^"']+)["']/g)].map((match) => match[1]))];
@@ -60,12 +88,14 @@ test('todos los recursos declarados por la página responden con un tipo correct
 
 test('cada foto del catálogo real se sirve como imagen con contenido', async () => {
   for (const product of products) {
-    const response = await fetch(new URL(product.image, `${origin}/`));
-    assert.equal(response.status, 200, `${product.id}: ${product.image}`);
-    assert.match(response.headers.get('content-type'), /^image\//, product.id);
-    const bytes = new Uint8Array(await response.arrayBuffer());
-    assert.ok(bytes.length > 100, `${product.id}: imagen vacía o demasiado pequeña`);
-    if (/\.jpe?g$/.test(product.image)) assert.deepEqual([...bytes.slice(0, 3)], [0xff, 0xd8, 0xff]);
+    for (const source of new Set([product.image, ...(product.gallery ?? []).map((image) => image.src)])) {
+      const response = await fetch(new URL(source, `${origin}/`));
+      assert.equal(response.status, 200, `${product.id}: ${source}`);
+      assert.match(response.headers.get('content-type'), /^image\//, product.id);
+      const bytes = new Uint8Array(await response.arrayBuffer());
+      assert.ok(bytes.length > 100, `${product.id}: imagen vacía o demasiado pequeña`);
+      if (/\.jpe?g$/.test(source)) assert.deepEqual([...bytes.slice(0, 3)], [0xff, 0xd8, 0xff]);
+    }
   }
 });
 
@@ -74,6 +104,8 @@ test('el documento contiene controles accesibles del catálogo, carrusel y alias
   assert.match(html, /id=["']catalog-grid["']/);
   assert.match(html, /data-category=["']todos["']/);
   assert.match(html, /data-category=["']kits["']/);
+  assert.match(html, /data-category=["']colorear["']/);
+  assert.match(html, /id=["']product-gallery["']/);
   assert.match(html, /data-bs-target=["']#design-carousel["']/);
   assert.match(html, /id=["']copy-alias["']/);
   assert.match(html, /<dialog\b[^>]*id=["']payment-dialog["']/);

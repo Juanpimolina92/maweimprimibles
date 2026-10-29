@@ -81,15 +81,28 @@ async function verifyPublicDependencyGraph(prefix) {
           queue.push(new URL(reference, resourceUrl).href);
         }
       }
+      if (resourceUrl.pathname.endsWith('.css')) {
+        assert.match(response.headers.get('content-type'), /^text\/css/);
+        const css = new TextDecoder().decode(content);
+        for (const match of css.matchAll(/url\(\s*(?:"([^"]*)"|'([^']*)'|([^)\s]+))\s*\)/g)) {
+          const reference = match[1] ?? match[2] ?? match[3];
+          if (reference.startsWith('data:') || reference.startsWith('#')) continue;
+          const dependency = new URL(reference, resourceUrl);
+          assert.equal(dependency.origin, documentUrl.origin, `${prefix}: recurso CSS externo ${reference}`);
+          queue.push(dependency.href);
+        }
+      }
     }
     assert.ok([...seen].some((href) => href.endsWith('/assets/catalog.js')), `${prefix}: import del catálogo no comprobado`);
     for (const product of products) {
-      const imageUrl = new URL(product.image, documentUrl);
-      assert.ok(imageUrl.pathname.startsWith(prefix), `${product.id}: foto escapó de ${prefix}`);
-      const response = await fetch(imageUrl);
-      assert.equal(response.status, 200, `${prefix}: foto ${product.id}`);
-      assert.match(response.headers.get('content-type'), /^image\//);
-      assert.ok((await response.arrayBuffer()).byteLength > 100, `${product.id}: foto vacía`);
+      for (const source of new Set([product.image, ...(product.gallery ?? []).map((image) => image.src)])) {
+        const imageUrl = new URL(source, documentUrl);
+        assert.ok(imageUrl.pathname.startsWith(prefix), `${product.id}: foto escapó de ${prefix}`);
+        const response = await fetch(imageUrl);
+        assert.equal(response.status, 200, `${prefix}: foto ${product.id} ${source}`);
+        assert.match(response.headers.get('content-type'), /^image\//);
+        assert.ok((await response.arrayBuffer()).byteLength > 100, `${product.id}: foto vacía`);
+      }
     }
   } finally {
     await closeServer(server);

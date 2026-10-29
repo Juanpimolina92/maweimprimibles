@@ -1,4 +1,5 @@
 import { products, filterProducts, buildWhatsAppUrl, productInquiry, PAYMENT_ALIAS } from './catalog.js';
+import { attachCardMotion } from './card-motion.js';
 
 const grid = document.querySelector('#catalog-grid');
 const count = document.querySelector('#catalog-count');
@@ -7,6 +8,7 @@ const paymentDialog = document.querySelector('#payment-dialog');
 const menuToggle = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#main-navigation');
 let dialogTrigger = null;
+const cardMotion = attachCardMotion(grid);
 
 function element(tag, className, text) {
   const node = document.createElement(tag);
@@ -33,6 +35,7 @@ function createProductCard(product) {
   imageButton.append(image, view);
 
   const body = element('div', 'product-card-body');
+  if (product.tags?.includes('colorear')) imageButton.append(element('span', 'product-badge', 'Para colorear ✎'));
   const label = element('span', 'product-label', product.label);
   const heading = element('h3');
   const titleButton = element('button', 'product-title-button', product.name);
@@ -50,6 +53,7 @@ function createProductCard(product) {
 }
 
 function renderCatalog(category = 'todos') {
+  cardMotion.reset();
   const visibleProducts = filterProducts(products, category);
   const fragment = document.createDocumentFragment();
   visibleProducts.forEach((product) => fragment.append(createProductCard(product)));
@@ -75,20 +79,38 @@ function openProduct(product, trigger) {
   const image = document.querySelector('#product-dialog-image');
   image.src = product.image;
   image.alt = product.alt;
+  image.classList.toggle('is-coloring', product.tags?.includes('colorear') ?? false);
+  const gallery = document.querySelector('#product-gallery');
+  gallery.replaceChildren();
+  gallery.hidden = !product.gallery?.length;
+  product.gallery?.forEach((photo, index) => {
+    const button = element('button', 'gallery-button', photo.label);
+    button.type = 'button';
+    button.setAttribute('aria-pressed', String(index === 0));
+    button.addEventListener('click', () => {
+      image.src = photo.src;
+      image.alt = photo.alt;
+      gallery.querySelectorAll('button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    });
+    gallery.append(button);
+  });
   const whatsapp = document.querySelector('#product-dialog-whatsapp');
   whatsapp.href = buildWhatsAppUrl(productInquiry(product));
   openDialog(productDialog, trigger);
 }
 
-document.querySelectorAll('.filter-button').forEach((button) => {
-  button.addEventListener('click', () => {
-    document.querySelectorAll('.filter-button').forEach((filter) => {
-      const selected = filter === button;
-      filter.classList.toggle('is-active', selected);
-      filter.setAttribute('aria-pressed', String(selected));
-    });
-    renderCatalog(button.dataset.category);
+function selectCategory(category) {
+  document.querySelectorAll('.filter-button').forEach(filter => {
+    const selected = filter.dataset.category === category;
+    filter.classList.toggle('is-active', selected);
+    filter.setAttribute('aria-pressed', String(selected));
   });
+  renderCatalog(category);
+}
+document.querySelectorAll('.filter-button').forEach(button => button.addEventListener('click', () => selectCategory(button.dataset.category)));
+document.addEventListener('click', event => {
+  const link = event.target.closest('a[data-catalog-filter]');
+  if (link) selectCategory(link.dataset.catalogFilter);
 });
 
 grid.addEventListener('click', (event) => {

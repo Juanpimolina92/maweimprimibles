@@ -1,7 +1,9 @@
 {
-  "testedUrl": "http://127.0.0.1:3001/",
   "date": "2026-10-14",
-  "scope": "Local browser; Vercel pendiente de push",
+  "testedUrls": [
+    "http://127.0.0.1:3001/",
+    "https://maweimprimibles.vercel.app/"
+  ],
   "checks": [
     {
       "name": "catálogo, Instagram y AOS cargan",
@@ -305,8 +307,61 @@
       "details": [],
       "pass": true,
       "time": "2026-10-14T10:55:44.817Z"
+    },
+    {
+      "name": "Vercel carga la nueva landing",
+      "scope": "production browser",
+      "pass": true,
+      "details": {
+        "alias": "marie.pezzutti.mp",
+        "aosReady": true,
+        "cards": 10,
+        "instagram": "https://www.instagram.com/mawe_kits/",
+        "title": "Mawe · Imprimibles y kits hechos con amor"
+      }
+    },
+    {
+      "name": "filtro Kits en Vercel",
+      "scope": "production browser",
+      "details": {
+        "count": 2
+      },
+      "pass": true,
+      "time": "2026-10-14T11:11:42.872Z"
+    },
+    {
+      "name": "detalle y WhatsApp en Vercel",
+      "scope": "production browser",
+      "details": {
+        "open": true,
+        "title": "Un festejo de Frozen",
+        "whatsapp": "https://wa.me/5492646241204?text=%C2%A1Hola%20Marieta!%20Vi%20%E2%80%9CUn%20festejo%20de%20Frozen%E2%80%9D%20en%20el%20cat%C3%A1logo%20de%20Mawe%20y%20me%20gustar%C3%ADa%20consultar%20por%20este%20dise%C3%B1o.%20Mi%20idea%20es%3A%20"
+      },
+      "pass": true,
+      "time": "2026-10-14T11:11:43.907Z"
+    },
+    {
+      "name": "catálogo completo en Vercel",
+      "scope": "production browser",
+      "details": 10,
+      "pass": true,
+      "time": "2026-10-14T11:11:44.997Z"
+    },
+    {
+      "name": "carrusel en Vercel",
+      "scope": "production browser",
+      "details": "2 de 3",
+      "pass": true,
+      "time": "2026-10-14T11:13:06.776Z"
+    },
+    {
+      "name": "copia del alias en Vercel",
+      "scope": "production browser",
+      "details": "marie.pezzutti.mp",
+      "pass": true,
+      "time": "2026-10-14T11:13:27.822Z"
     }
   ],
-  "passed": 19,
+  "passed": 25,
   "unresolved": 0
 }

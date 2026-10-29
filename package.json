@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Catálogo de imprimibles y kits de Marieta",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
     "start": "node src/server.mjs",
@@ -15,10 +17,14 @@
     "test:security": "node --test tests/security.test.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/fraunces": "5.3.0",
     "aos": "2.3.4",
-    "bootstrap": "5.3.8"
+    "bootstrap": "5.3.8",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
+    "esbuild": "0.28.2",
     "hamljs": "0.6.2",
     "sass": "1.93.2"
   }
